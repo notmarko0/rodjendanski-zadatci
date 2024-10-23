@@ -92,6 +92,38 @@
         <p id="feedback3" class="feedback"></p>
     </div>
 
+    <div id="question4" class="question">
+        <p><strong>Pitanje 4:</strong> #4?</p>
+        <input type="text" id="answer4" placeholder="Upiši četvrti znak lozinke...">
+        <br>
+        <button onclick="checkAnswer(4)">Provjeri odgovor</button>
+        <p id="feedback4" class="feedback"></p>
+    </div>
+
+    <div id="question5" class="question">
+        <p><strong>Pitanje 5:</strong> #5?</p>
+        <input type="text" id="answer5" placeholder="Upiši peti znak lozinke...">
+        <br>
+        <button onclick="checkAnswer(5)">Provjeri odgovor</button>
+        <p id="feedback5" class="feedback"></p>
+    </div>
+
+    <div id="question6" class="question">
+        <p><strong>Pitanje 6:</strong> #6?</p>
+        <input type="text" id="answer6" placeholder="Upiši šesti znak lozinke...">
+        <br>
+        <button onclick="checkAnswer(6)">Provjeri odgovor</button>
+        <p id="feedback6" class="feedback"></p>
+    </div>
+
+    <div id="question7" class="question">
+        <p><strong>Pitanje 7:</strong> #7?</p>
+        <input type="text" id="answer7" placeholder="Upiši sedmi znak lozinke...">
+        <br>
+        <button onclick="checkAnswer(7)">Provjeri odgovor</button>
+        <p id="feedback7" class="feedback"></p>
+    </div>
+
     <div id="final-message">
         <h2>🎂 Bravo! Riješila si sve zadatke! 🎂</h2>
         <p>Poklon te čeka! 😊</p>
@@ -103,9 +135,13 @@
             let userAnswer = document.getElementById('answer' + questionNumber).value;
             let feedback = document.getElementById('feedback' + questionNumber);
             let correctAnswers = {
-                1: "H", // Upiši točan odgovor
-                2: "x", // Upiši točan datum
-                3: "5" // Točan odgovor za matematički zadatak
+                1: "H", 
+                2: "x", 
+                3: "5",
+                4: "A", // Dodani odgovor za pitanje 4
+                5: "r", // Dodani odgovor za pitanje 5
+                6: "3", // Dodani odgovor za pitanje 6
+                7: "B"  // Dodani odgovor za pitanje 7
             };
 
             if (userAnswer === correctAnswers[questionNumber]) {
@@ -113,7 +149,7 @@
                 feedback.className = "feedback correct";
                 document.getElementById('question' + questionNumber).classList.remove('active');
 
-                if (questionNumber < 3) {
+                if (questionNumber < 7) {
                     document.getElementById('question' + (questionNumber + 1)).classList.add('active');
                 } else {
                     document.getElementById('final-message').style.display = 'block';
