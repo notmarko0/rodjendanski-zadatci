@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rođendanski zadaci</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding: 20px;
+        }
+        .question {
+            display: none;
+        }
+        .question.active {
+            display: block;
+        }
+        .hidden-message {
+            display: none;
+        }
+        input[type="text"], button {
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rođendanski zadaci</h1>
+    <div id="question1" class="question active">
+        <p><strong>Pitanje 1:</strong> Koliko dugo traje naša veza?</p>
+        <input type="text" id="answer1" placeholder="Upiši broj godina...">
+        <br>
+        <button onclick="checkAnswer(1)">Provjeri odgovor</button>
+        <p id="feedback1"></p>
+    </div>
 
+    <div id="question2" class="question">
+        <p><strong>Pitanje 2:</strong> Koji je datum kada smo se upoznali?</p>
+        <input type="text" id="answer2" placeholder="Upiši datum...">
+        <br>
+        <button onclick="checkAnswer(2)">Provjeri odgovor</button>
+        <p id="feedback2"></p>
+    </div>
+
+    <div id="question3" class="question">
+        <p><strong>Pitanje 3:</strong> Koliko je 5 + 5?</p>
+        <input type="text" id="answer3" placeholder="Upiši odgovor...">
+        <br>
+        <button onclick="checkAnswer(3)">Provjeri odgovor</button>
+        <p id="feedback3"></p>
+    </div>
+
+    <div id="final-message" class="hidden-message">
+        <h2>Bravo! Riješila si sve zadatke!</h2>
+        <p>Poklon te čeka! 😊</p>
+    </div>
+
+    <script>
+        function checkAnswer(questionNumber) {
+            let userAnswer = document.getElementById('answer' + questionNumber).value;
+            let feedback = document.getElementById('feedback' + questionNumber);
+            let correctAnswers = {
+                1: "2", // Ovdje upiši točan odgovor, npr. 2 godine
+                2: "01.01.2022", // Datum kada ste se upoznali
+                3: "10" // Matematički odgovor
+            };
+
+            if (userAnswer === correctAnswers[questionNumber]) {
+                feedback.textContent = "Točno! Idemo dalje!";
+                feedback.style.color = "green";
+                document.getElementById('question' + questionNumber).classList.remove('active');
+                
+                if (questionNumber < 3) {
+                    document.getElementById('question' + (questionNumber + 1)).classList.add('active');
+                } else {
+                    document.getElementById('final-message').style.display = 'block';
+                }
+            } else {
+                feedback.textContent = "Netočno, probaj ponovno!";
+                feedback.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
