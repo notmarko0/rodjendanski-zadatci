@@ -6,13 +6,26 @@
     <title>Rođendanski zadaci</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #ffefd5;
             text-align: center;
             padding: 20px;
+            background-image: url('https://i.imgur.com/f7bXy0k.png'); /* Konfeti slika za pozadinu */
+            background-size: cover;
+            background-position: center;
+        }
+        h1 {
+            color: #ff69b4;
+            font-size: 3em;
+            animation: bounce 2s infinite;
         }
         .question {
             display: none;
+            margin-bottom: 20px;
+            background-color: #fff8dc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .question.active {
             display: block;
@@ -23,17 +36,57 @@
         input[type="text"], button {
             padding: 10px;
             margin-top: 10px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            border: 2px solid #ff69b4;
+        }
+        button {
+            background-color: #ff69b4;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #ff1493;
+        }
+        .feedback {
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        #final-message {
+            display: none;
+            margin-top: 20px;
+        }
+        #final-message h2 {
+            color: #ff4500;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Rođendanski zadaci</h1>
+    <h1>🎉 Rođendanski zadaci 🎉</h1>
+
     <div id="question1" class="question active">
         <p><strong>Pitanje 1:</strong> Koliko dugo traje naša veza?</p>
         <input type="text" id="answer1" placeholder="Upiši broj godina...">
         <br>
         <button onclick="checkAnswer(1)">Provjeri odgovor</button>
-        <p id="feedback1"></p>
+        <p id="feedback1" class="feedback"></p>
     </div>
 
     <div id="question2" class="question">
@@ -41,7 +94,7 @@
         <input type="text" id="answer2" placeholder="Upiši datum...">
         <br>
         <button onclick="checkAnswer(2)">Provjeri odgovor</button>
-        <p id="feedback2"></p>
+        <p id="feedback2" class="feedback"></p>
     </div>
 
     <div id="question3" class="question">
@@ -49,12 +102,13 @@
         <input type="text" id="answer3" placeholder="Upiši odgovor...">
         <br>
         <button onclick="checkAnswer(3)">Provjeri odgovor</button>
-        <p id="feedback3"></p>
+        <p id="feedback3" class="feedback"></p>
     </div>
 
-    <div id="final-message" class="hidden-message">
-        <h2>Bravo! Riješila si sve zadatke!</h2>
+    <div id="final-message">
+        <h2>🎂 Bravo! Riješila si sve zadatke! 🎂</h2>
         <p>Poklon te čeka! 😊</p>
+        <img src="https://i.imgur.com/O0DCcQy.png" alt="Rođendanska torta" width="200">
     </div>
 
     <script>
@@ -62,16 +116,16 @@
             let userAnswer = document.getElementById('answer' + questionNumber).value;
             let feedback = document.getElementById('feedback' + questionNumber);
             let correctAnswers = {
-                1: "2", // Ovdje upiši točan odgovor, npr. 2 godine
-                2: "01.01.2022", // Datum kada ste se upoznali
-                3: "10" // Matematički odgovor
+                1: "2", // Upiši točan odgovor
+                2: "01.01.2022", // Upiši točan datum
+                3: "10" // Točan odgovor za matematički zadatak
             };
 
             if (userAnswer === correctAnswers[questionNumber]) {
                 feedback.textContent = "Točno! Idemo dalje!";
-                feedback.style.color = "green";
+                feedback.className = "feedback correct";
                 document.getElementById('question' + questionNumber).classList.remove('active');
-                
+
                 if (questionNumber < 3) {
                     document.getElementById('question' + (questionNumber + 1)).classList.add('active');
                 } else {
@@ -79,7 +133,7 @@
                 }
             } else {
                 feedback.textContent = "Netočno, probaj ponovno!";
-                feedback.style.color = "red";
+                feedback.className = "feedback incorrect";
             }
         }
     </script>
