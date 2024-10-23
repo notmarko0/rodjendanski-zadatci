@@ -66,27 +66,27 @@
     </style>
 </head>
 <body>
-    <h1>🎉 Rođendanski zadaci 🎉</h1>
+        <h1>🎉 Rođendanska lozinka 🎉</h1>
 
     <div id="question1" class="question active">
-        <p><strong>Pitanje 1:</strong> Koliko dugo traje naša veza?</p>
-        <input type="text" id="answer1" placeholder="Upiši broj godina...">
+        <p><strong>Pitanje 1:</strong> #1?</p>
+        <input type="text" id="answer1" placeholder="Upiši prvi broj lozinke...">
         <br>
         <button onclick="checkAnswer(1)">Provjeri odgovor</button>
         <p id="feedback1" class="feedback"></p>
     </div>
 
     <div id="question2" class="question">
-        <p><strong>Pitanje 2:</strong> Koji je datum kada smo se upoznali?</p>
-        <input type="text" id="answer2" placeholder="Upiši datum...">
+        <p><strong>Pitanje 2:</strong> #2?</p>
+        <input type="text" id="answer2" placeholder="Upiši drugi broj lozinke...">
         <br>
         <button onclick="checkAnswer(2)">Provjeri odgovor</button>
         <p id="feedback2" class="feedback"></p>
     </div>
 
     <div id="question3" class="question">
-        <p><strong>Pitanje 3:</strong> Koliko je 5 + 5?</p>
-        <input type="text" id="answer3" placeholder="Upiši odgovor...">
+        <p><strong>Pitanje 3:</strong> #3?</p>
+        <input type="text" id="answer3" placeholder="Upiši treći broj lozinke...">
         <br>
         <button onclick="checkAnswer(3)">Provjeri odgovor</button>
         <p id="feedback3" class="feedback"></p>
@@ -103,9 +103,9 @@
             let userAnswer = document.getElementById('answer' + questionNumber).value;
             let feedback = document.getElementById('feedback' + questionNumber);
             let correctAnswers = {
-                1: "2", // Upiši točan odgovor
-                2: "01.01.2022", // Upiši točan datum
-                3: "10" // Točan odgovor za matematički zadatak
+                1: "H", // Upiši točan odgovor
+                2: "x", // Upiši točan datum
+                3: "5" // Točan odgovor za matematički zadatak
             };
 
             if (userAnswer === correctAnswers[questionNumber]) {
