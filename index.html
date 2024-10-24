@@ -26,10 +26,12 @@
             margin: 0 auto;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        .alphabet-image {
-            max-width: 100%;
-            height: auto;
+        .alphabet {
+            font-size: 1.5em;
+            font-weight: bold;
             margin: 20px 0;
+            color: #ff6347;
+            letter-spacing: 2px; /* Razmak između slova */
         }
         .question {
             display: none;
@@ -88,8 +90,8 @@
         <p>Cezarova šifra pomiče svako slovo unaprijed za određeni broj mjesta u abecedi, prema definiranom ključu. Na primjer, ako je slovo "A" i ključ je +3, postaje "D". Hint: negdje je na poklonu!</p>
     </div>
 
-    <!-- Dodana slika engleske abecede -->
-    <img src="https://www.clipartmax.com/png/full/7-71384_alphabet-a-z-clip-art-alphabet-s-numbers.png" alt="Engleska abeceda" class="alphabet-image">
+    <!-- Tekstualni prikaz engleske abecede -->
+    <div class="alphabet">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</div>
 
     <div id="question1" class="question active">
         <p><strong>Papirić #1</strong></p>
