@@ -80,7 +80,7 @@
     <h1>🎉 Rođendanska lozinka 🎉</h1>
 
     <div class="explanation">
-        <p>Cezarova šifra pomiče svako slovo unaprijed za određeni broj mjesta u abecedi, prema definiranom ključu. Na primjer, ako je slovo "A" i ključ je +3, postaje "D". Tvoj zadatak je unijeti točne znakove prema zadanim papirima i riješiti šifru!</p>
+        <p>Cezarova šifra pomiče svako slovo unaprijed za određeni broj mjesta u abecedi, prema definiranom ključu. Na primjer, ako je slovo "A" i ključ je +3, postaje "D". Hint: negdje je na poklonu!</p>
     </div>
 
     <div id="question1" class="question active">
@@ -150,13 +150,13 @@
             let userAnswer = document.getElementById('answer' + questionNumber).value;
             let feedback = document.getElementById('feedback' + questionNumber);
             let correctAnswers = {
-                1: "H", 
-                2: "x", 
-                3: "5",
-                4: "A",
-                5: "r", 
-                6: "3", 
-                7: "B"
+                1: "Y", // 3
+                2: "Q", // 2
+                3: "P", // 4
+                4: "N", // 5
+                5: "N", // 1
+                6: "U", // 1
+                7: "G"  // 2
             };
 
             if (userAnswer === correctAnswers[questionNumber]) {
