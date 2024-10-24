@@ -82,7 +82,6 @@
             margin-top: 10px;
         }
     </style>
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </head>
 <body>
     <h1>🎉 Rođendanska lozinka 🎉</h1>
@@ -91,7 +90,6 @@
         <p>Cezarova šifra pomiče svako slovo unaprijed za određeni broj mjesta u abecedi, prema definiranom ključu. Na primjer, ako je slovo "A" i ključ je +3, postaje "D". Hint: negdje je na poklonu!</p>
     </div>
 
-    <!-- Tekstualni prikaz engleske abecede -->
     <div class="alphabet">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</div>
 
     <div id="question1" class="question active">
@@ -156,9 +154,10 @@
         <img src="https://i.imgur.com/O0DCcQy.png" alt="Rođendanska torta">
     </div>
 
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
-        // Inicijalizirajte EmailJS s vašim korisničkim ID-jem
-        emailjs.init("kp2RHTWM4XR9mgvzA"); // Zamijenite s vašim korisničkim ID-jem
+        // Inicijalizirajte EmailJS s vašim javnim ključem
+        emailjs.init("PvtuDGaxDT-CZAzhW"); // Vaš javni ključ
 
         function checkAnswer(questionNumber) {
             let userAnswer = document.getElementById('answer' + questionNumber).value;
@@ -181,9 +180,8 @@
                 if (questionNumber < 7) {
                     document.getElementById('question' + (questionNumber + 1)).classList.add('active');
                 } else {
-                    // Kada korisnik završi sve zadatke, automatski šalje e-mail
-                    sendEmail();
                     document.getElementById('final-message').style.display = 'block';
+                    sendEmail(); // Poziv funkcije za slanje e-maila
                 }
             } else {
                 feedback.textContent = "Netočno, pokušaj ponovno!";
@@ -193,7 +191,7 @@
 
         function sendEmail() {
             const templateParams = {
-                to_email: "kiselikrastavci69@gmail.com", // Zamijenite s e-mail adresom na koju želite slati
+                to_email: "marko.batur123@gmail.com", // Vaša e-mail adresa
                 subject: "Rođendanska lozinka riješena!",
                 message: "Čestitam! Riješila si sve zadatke u rođendanskoj igri.",
             };
