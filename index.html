@@ -82,6 +82,7 @@
             margin-top: 10px;
         }
     </style>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </head>
 <body>
     <h1>🎉 Rođendanska lozinka 🎉</h1>
@@ -156,6 +157,9 @@
     </div>
 
     <script>
+        // Inicijalizirajte EmailJS s vašim korisničkim ID-jem
+        emailjs.init("kp2RHTWM4XR9mgvzA"); // Zamijenite s vašim korisničkim ID-jem
+
         function checkAnswer(questionNumber) {
             let userAnswer = document.getElementById('answer' + questionNumber).value;
             let feedback = document.getElementById('feedback' + questionNumber);
@@ -177,12 +181,29 @@
                 if (questionNumber < 7) {
                     document.getElementById('question' + (questionNumber + 1)).classList.add('active');
                 } else {
+                    // Kada korisnik završi sve zadatke, automatski šalje e-mail
+                    sendEmail();
                     document.getElementById('final-message').style.display = 'block';
                 }
             } else {
                 feedback.textContent = "Netočno, pokušaj ponovno!";
                 feedback.className = "feedback incorrect";
             }
+        }
+
+        function sendEmail() {
+            const templateParams = {
+                to_email: "marko.batur123@gmail.com", // Zamijenite s e-mail adresom na koju želite slati
+                subject: "Rođendanska lozinka riješena!",
+                message: "Čestitam! Riješila si sve zadatke u rođendanskoj igri.",
+            };
+
+            emailjs.send('service_3zn4jv9', 'template_pmkm9fd', templateParams)
+                .then((response) => {
+                    console.log('E-mail poslan!', response.status, response.text);
+                }, (error) => {
+                    console.error('Došlo je do pogreške prilikom slanja e-maila:', error);
+                });
         }
     </script>
 </body>
