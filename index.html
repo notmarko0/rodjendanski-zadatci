@@ -151,24 +151,27 @@
     <div id="final-message">
         <h2>🎂 Bravo ljubavi! Riješila si sve! 🎂</h2>
         <p>Poklon te čeka! 😊</p>
-        <img src="https://www.creativefabrica.com/wp-content/uploads/2023/03/20/Birthday-Cake-Sticker-Icon-Graphics-64786603-2-580x387.png" alt="Rođendanska torta">
+        <img src="https://i.imgur.com/O0DCcQy.png" alt="Rođendanska torta">
     </div>
 
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.3.0/dist/email.min.js"></script>
     <script>
-        emailjs.init("PvtuDGaxDT-CZAzhW");
+        // Inicijalizirajte EmailJS s vašim javnim ključem
+        (function(){
+            emailjs.init("PvtuDGaxDT-CZAzhW"); // Zamijenite s vašim javnim ključem
+        })();
 
         function checkAnswer(questionNumber) {
-            let userAnswer = document.getElementById('answer' + questionNumber).value;
+            let userAnswer = document.getElementById('answer' + questionNumber).value.toUpperCase(); // Pretvorite odgovor u velika slova
             let feedback = document.getElementById('feedback' + questionNumber);
             let correctAnswers = {
-                1: "Y",
-                2: "Q",
-                3: "P",
-                4: "N",
-                5: "N",
-                6: "U",
-                7: "G"
+                1: "Y", // 3
+                2: "Q", // 2
+                3: "P", // 4
+                4: "N", // 5
+                5: "N", // 1
+                6: "U", // 1
+                7: "G"  // 2
             };
 
             if (userAnswer === correctAnswers[questionNumber]) {
@@ -180,7 +183,7 @@
                     document.getElementById('question' + (questionNumber + 1)).classList.add('active');
                 } else {
                     document.getElementById('final-message').style.display = 'block';
-                    sendEmail();
+                    sendEmail(); // Poziv funkcije za slanje e-maila
                 }
             } else {
                 feedback.textContent = "Netočno, pokušaj ponovno!";
@@ -189,7 +192,13 @@
         }
 
         function sendEmail() {
-            emailjs.send('service_3zn4jv9', 'template_pmkm9fd')
+            const templateParams = {
+                to_email: "marko.batur123@gmail.com", // Vaša e-mail adresa
+                subject: "Rođendanska lozinka riješena!",
+                message: "Čestitam! Riješila si sve zadatke u rođendanskoj igri.",
+            };
+
+            emailjs.send('service_3zn4jv9', 'template_pmkm9fd', templateParams) // Zamijenite s vašim service ID i template ID
                 .then((response) => {
                     console.log('E-mail poslan!', response.status, response.text);
                 }, (error) => {
