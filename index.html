@@ -12,7 +12,7 @@
             padding: 20px;
         }
         h1 {
-            color: black; /* Promijenjeno iz crvene u crnu */
+            color: black;
             margin-bottom: 20px;
         }
         .explanation {
@@ -30,8 +30,8 @@
             font-size: 1.5em;
             font-weight: bold;
             margin: 20px 0;
-            color: green; /* Boja slova postavljena na zelenu */
-            letter-spacing: 2px; /* Razmak između slova */
+            color: green;
+            letter-spacing: 2px;
         }
         .question {
             display: none;
@@ -151,25 +151,24 @@
     <div id="final-message">
         <h2>🎂 Bravo ljubavi! Riješila si sve! 🎂</h2>
         <p>Poklon te čeka! 😊</p>
-        <img src="https://i.imgur.com/O0DCcQy.png" alt="Rođendanska torta">
+        <img src="https://www.creativefabrica.com/wp-content/uploads/2023/03/20/Birthday-Cake-Sticker-Icon-Graphics-64786603-2-580x387.png" alt="Rođendanska torta">
     </div>
 
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
-        // Inicijalizirajte EmailJS s vašim javnim ključem
-        emailjs.init("PvtuDGaxDT-CZAzhW"); // Vaš javni ključ
+        emailjs.init("PvtuDGaxDT-CZAzhW");
 
         function checkAnswer(questionNumber) {
             let userAnswer = document.getElementById('answer' + questionNumber).value;
             let feedback = document.getElementById('feedback' + questionNumber);
             let correctAnswers = {
-                1: "Y", // 3
-                2: "Q", // 2
-                3: "P", // 4
-                4: "N", // 5
-                5: "N", // 1
-                6: "U", // 1
-                7: "G"  // 2
+                1: "Y",
+                2: "Q",
+                3: "P",
+                4: "N",
+                5: "N",
+                6: "U",
+                7: "G"
             };
 
             if (userAnswer === correctAnswers[questionNumber]) {
@@ -181,7 +180,7 @@
                     document.getElementById('question' + (questionNumber + 1)).classList.add('active');
                 } else {
                     document.getElementById('final-message').style.display = 'block';
-                    sendEmail(); // Poziv funkcije za slanje e-maila
+                    sendEmail();
                 }
             } else {
                 feedback.textContent = "Netočno, pokušaj ponovno!";
@@ -191,7 +190,7 @@
 
         function sendEmail() {
             const templateParams = {
-                to_email: "marko.batur123@gmail.com", // Vaša e-mail adresa
+                to_email: "marko.batur123@gmail.com",
                 subject: "Rođendanska lozinka riješena!",
                 message: "Čestitam! Riješila si sve zadatke u rođendanskoj igri.",
             };
