@@ -189,13 +189,7 @@
         }
 
         function sendEmail() {
-            const templateParams = {
-                to_email: "marko.batur123@gmail.com",
-                subject: "Rođendanska lozinka riješena!",
-                message: "Čestitam! Riješila si sve zadatke u rođendanskoj igri.",
-            };
-
-            emailjs.send('service_3zn4jv9', 'template_pmkm9fd', templateParams)
+            emailjs.send('service_3zn4jv9', 'template_pmkm9fd')
                 .then((response) => {
                     console.log('E-mail poslan!', response.status, response.text);
                 }, (error) => {
