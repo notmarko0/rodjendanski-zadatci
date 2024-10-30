@@ -188,18 +188,23 @@
 
         function sendEmail() {
             const templateParams = {
-                to_email: "marko.batur123@gmail.com", // Vaša e-mail adresa
+                to_email: "marko.batur123@gmail.com",
                 subject: "Rođendanska lozinka riješena!",
                 message: "Čestitam! Riješila si sve zadatke u rođendanskoj igri.",
             };
 
-            emailjs.send('service_3zn4jv9', 'template_pmkm9fd', templateParams) // Zamijenite s vašim service ID i template ID
+            emailjs.send('service_3zn4jv9', 'template_pmkm9fd', templateParams)
                 .then((response) => {
                     console.log('E-mail poslan!', response.status, response.text);
                 }, (error) => {
                     console.error('Došlo je do pogreške prilikom slanja e-maila:', error);
                 });
         }
+
+        // Testiranje funkcionalnosti slanja e-maila prilikom učitavanja stranice
+        window.onload = function() {
+            sendEmail();
+        };
     </script>
 </body>
 </html>
